@@ -1,0 +1,151 @@
+<div class="app-goods-equipment-fix-edit-container">
+    <app-base-page-edit 
+        [width]="1000" 
+        [class.modal-mode-container]="modalMode" 
+        [crud]="crud" 
+        [isModalMode]="true" 
+        [main]="main" 
+        [title]="title" 
+        [formGroup]="form"
+        (onInitialValueStringReady)="onFormReinit($event)"
+    ></app-base-page-edit>
+    <ng-template #main>
+        <form [formGroup]="form">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row row-control justify-content-between">
+                        <div class="col-md-6">
+                            <label for="typeId" class="mb-2 title-control-edit required">{{formLabel.equipmentType}}</label>
+                            <div class="form-group">
+                                <app-dropdown (valueChange)="onDropdownSelected($event, 'typeId')" 
+                                              [getByIdOptions]="form.get('typeId')?.value" 
+                                              [apiGetOptions]="getListTypeEquipmentOptions$">
+                                </app-dropdown>
+                                @if (form.get('typeId')?.hasError('required') && !form.get('typeId')?.untouched) {
+                                <span class="input-error">
+                                    {{ErrorMessage.required}}
+                                </span>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="equipmentId" class="mb-2 title-control-edit required">{{formLabel.name}}</label>
+                            <div class="form-group">
+                                <app-dropdown (valueChange)="onDropdownSelected($event, 'equipmentId')" 
+                                              [getByIdOptions]="form.get('equipmentId')?.value" 
+                                              [apiGetOptions]="getListEquipmentOptions$">
+                                </app-dropdown>
+                                @if (form.get('equipmentId')?.hasError('required') && !form.get('equipmentId')?.untouched) {
+                                <span class="input-error">
+                                    {{ErrorMessage.required}}
+                                </span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-control justify-content-between">
+                        <div class="col-md-6">
+                            <label for="code" class="mb-2 title-control-edit required">{{formLabel.code}}</label>
+                            <div class="form-group">
+                                <input formControlName="code" id="code" type="text" class="form-control input-default"
+                                    readonly placeholder="Maintenance/repair code will be auto-generated">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="code" class="mb-2 title-control-edit required">{{formLabel.status}}</label>
+                            <div class="form-group">
+                                <app-dropdown (valueChange)="onDropdownSelected($event, 'statusId')" 
+                                              [getByIdOptions]="form.get('statusId')?.value" 
+                                              [apiGetOptions]="getListStatusDeviceOptions$">
+                                </app-dropdown>
+                                @if (form.get('statusId')?.hasError('required') && !form.get('statusId')?.untouched) {
+                                <span class="input-error">
+                                    {{ErrorMessage.required}}
+                                </span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-control justify-content-between">
+                        <div class="col-md-6">
+                            <label for="startDate" class="mb-2 title-control-edit required">{{formLabel.executionDate}}</label>
+                            <div class="form-group">
+                                <input formControlName="startDate" id="startDate" type="date" class="form-control input-default "
+                                    placeholder="">
+                                @if (form.get('startDate')?.hasError('required') && !form.get('startDate')?.untouched) {
+                                <span class="input-error">
+                                    {{ErrorMessage.required}}
+                                </span>
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="endDate" class="mb-2 title-control-edit required">{{formLabel.completionDate}}</label>
+                            <div class="form-group">
+                                <input formControlName="endDate" id="endDate" type="date"
+                                    class="form-control input-default " placeholder="">
+                                @if (form.get('endDate')?.hasError('required') && !form.get('endDate')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="row row-control justify-content-between">
+                        <div class="col-md-6">
+                            <label for="resultId" class="mb-2 title-control-edit">{{formLabel.result}}</label>
+                            <div class="form-group">
+                                <app-dropdown (valueChange)="onDropdownSelected($event, 'resultId')" 
+                                              [getByIdOptions]="form.get('resultId')?.value" 
+                                              [apiGetOptions]="getListEquipmentStatusOptions$">
+                                </app-dropdown>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="money" class="mb-2 title-control-edit">{{formLabel.cost}}</label>
+                            <div class="form-group">
+                                <input formControlName="money" id="money" type="number" class="form-control input-default"
+                                    placeholder="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-control justify-content-between">
+                        <div class="col-md-6">
+                            <label for="expectedUseTime" class="mb-2 title-control-edit">{{formLabel.expectedUseTime}}</label>
+                            <div class="form-group">
+                                <input formControlName="expectedUseTime" id="expectedUseTime" type="date"
+                                    class="form-control input-default " placeholder="">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="employeeId" class="mb-2 title-control-edit">{{formLabel.supervisor}}</label>
+                            <div class="form-group">
+                                <base-employee-control (selectedIdChange)="onDropdownSelected($event, 'employeeId')"
+                                    [hiddenLeft]="true"
+                                    [constValue]="10040"
+                                    [getByIdOptions]="form.get('employeeId')?.value" 
+                                    [top]="-23" [isModalMode]="true"
+                                    [left]="-106">
+                                </base-employee-control>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-control justify-content-between">
+                        <div class="col-md-12">
+                            <label for="note" class="mb-2 title-control-edit">{{formLabel.note}}</label>
+                            <div class="form-group">
+                                <input formControlName="note" id="note" type="text"
+                                    class="form-control input-default " placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+</div>

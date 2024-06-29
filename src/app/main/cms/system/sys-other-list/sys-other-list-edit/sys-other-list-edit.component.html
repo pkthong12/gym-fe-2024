@@ -1,0 +1,56 @@
+<div class="app-sys-other-list-type-edit-container">
+    <app-base-page-edit [width]="600" [class.modal-mode-container]="modalMode" [crud]="crud" [isModalMode]="modalMode"
+        [main]="main" [title]="title" [formGroup]="form"
+        (onInitialValueStringReady)="onFormReinit($event)"></app-base-page-edit>
+    <ng-template #main>
+        <form [formGroup]="form">
+            <div class="row w-100">
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="typeId" class="mb-2 title-control-edit required">Nhóm tham số</label>
+                        <div class="form-group">
+                            <app-dropdown (valueChange)="onDropdownSelected($event, 'typeId')"
+                                [getByIdOptions]="form.get('typeId')?.value" [apiGetOptions]="getListTypeOptions$">
+                            </app-dropdown>
+                        </div>
+                        @if (form.get('typeId')?.hasError('required') && !form.get('typeId')?.untouched) {
+                        <span class="input-error">
+                            Bắt buộc chọn
+                        </span>
+                        }
+                    </div>
+                    <div class="mb-3">
+                        <label for="code" class="mb-2 title-control-edit required">Mã tham số</label>
+                        <div class="form-group">
+                            <input formControlName="code" id="code" type="text" class="form-control input-default ">
+                            @if (form.get('code')?.hasError('required') && !form.get('code')?.untouched) {
+                            <span class="input-error">
+                                Bắt buộc chọn
+                            </span>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="mb-2 title-control-edit required">Tên tham số</label>
+                        <div class="form-group">
+                            <input formControlName="name" id="name" type="text" class="form-control input-default ">
+                            @if (form.get('name')?.hasError('required') && !form.get('name')?.untouched) {
+                            <span class="input-error">
+                                Bắt buộc chọn
+                            </span>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="" class="mb-2 title-control-edit">Ghi chú</label>
+                        <div class="form-group">
+                            <input formControlName="note" id="note" type="text" class="form-control input-default ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+</div>

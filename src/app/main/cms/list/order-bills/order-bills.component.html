@@ -1,0 +1,12 @@
+<div class="app-order-bills-container">
+    <app-base-page-list 
+        [outerInOperators]="outerInOperators" 
+        [title]="title" 
+        [columns]="columns" 
+        [buttons]="showButtons" 
+        [apiDefinition]="apiQueryList" 
+        [enableDoubleClick]="false" 
+        (buttonHeaderClick)="buttonHeaderClick($event)"
+        (selectedIdsChange)="onSelected($event)"
+    ></app-base-page-list>
+</div>

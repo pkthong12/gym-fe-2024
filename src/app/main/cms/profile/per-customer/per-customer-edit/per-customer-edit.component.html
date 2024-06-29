@@ -1,0 +1,166 @@
+<div class="app-per-customer-edit-container">
+    <app-base-page-edit [width]="1000!" [class.modal-mode-container]="modalMode" [crud]="crud" [isModalMode]="modalMode"
+        [main]="main" [title]="title" [formGroup]="form"
+        (onInitialValueStringReady)="onFormReinit($event)"></app-base-page-edit>
+    <ng-template #main>
+        <form [formGroup]="form">
+            <div class="row w-100">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="code" class="mb-2 title-control-edit required">{{formLabel.code}}</label>
+                                <div class="form-group">
+                                    <input formControlName="code" id="code" type="text" placeholder="Customer code will be spontaneously arising"
+                                        class="form-control input-default " readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="customerClassId" class="mb-2 title-control-edit required">{{formLabel.customerType}}</label>
+                                <div class="form-group">
+                                    <app-dropdown (valueChange)="onDropdownSelected($event, 'customerClassId')"
+                                        [getByIdOptions]="form.get('customerClassId')?.value"
+                                        [apiGetOptions]="getCustomerOptions$">
+                                    </app-dropdown>
+                                </div>
+                                @if (form.get('customerClassId')?.hasError('required') &&
+                                !form.get('customerClassId')?.untouched) {
+                                <span class="input-error">
+                                    {{ErrorMessage.required}}
+                                </span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="fullName" class="mb-2 title-control-edit required">{{formLabel.name}}</label>
+                                <div class="form-group">
+                                    <input formControlName="fullName" id="fullName" type="text"
+                                        class="form-control input-default">
+                                    @if (form.get('fullName')?.hasError('required') && !form.get('fullName')?.untouched)
+                                    {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="birthDate" class="mb-2 title-control-edit required">{{formLabel.dateOfBirth}}</label>
+                                <div class="form-group">
+                                    <input formControlName="birthDate" id="birthDate" type="date"
+                                        class="form-control input-default">
+                                    @if (form.get('birthDate')?.hasError('required') &&
+                                    !form.get('birthDate')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="genderId" class="mb-2 title-control-edit required">{{formLabel.gender}}</label>
+                            <div class="form-group">
+                                <app-dropdown (valueChange)="onDropdownSelected($event, 'genderId')"
+                                    [getByIdOptions]="form.get('genderId')?.value" [apiGetOptions]="getGenderOptions$">
+                                </app-dropdown>
+                                @if (form.get('genderId')?.hasError('required') && !form.get('genderId')?.untouched) {
+                                <span class="input-error">
+                                    {{ErrorMessage.required}}
+                                </span>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="address" class="mb-2 title-control-edit">{{formLabel.address}}</label>
+                            <div class="form-group">
+                                <input formControlName="address" id="address" type="text"
+                                    class="form-control input-dèault">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="phoneNumber" class="mb-2 title-control-edit">{{formLabel.phoneNumber}}</label>
+                            <div class="form-group">
+                                <input formControlName="phoneNumber" id="phoneNumber" type="number"
+                                    class="form-control input-default">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="idNo" class="mb-2 title-control-edit">{{formLabel.idNo}}</label>
+                            <div class="form-group">
+                                <input formControlName="idNo" id="idNo" type="text"
+                                    class="form-control input-default">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6 d-flex">
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                    <input type="checkbox" formControlName="isGuestPass"
+                                        class="custom-control-input form-control" id="isGuestPass">
+                                    <label class="custom-control-label" for="isGuestPass"></label>
+                                </div>
+                            </div>
+                            <label for="isGuestPass" class="mb-2 title-control-edit">{{formLabel.isGuestPass}}</label>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="" class="mb-2 title-control-edit">{{formLabel.email}}</label>
+                            <div class="form-group">
+                                <input formControlName="email" id="email" type="text" class="form-control input-default ">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <!-- <div class="col-md-6">
+                            <label for="perPtId" class="mb-2 title-control-edit">Huấn luyện viên</label>
+                            <div class="form-group">
+                                <base-employee-control (selectedIdChange)="onDropdownSelected($event, 'perPtId')"
+                                    [getByIdOptions]="form.get('perPtId')?.value"
+                                    [top]="-30"
+                                    [isModalMode]="false"
+                                    [left]="-15">
+                                </base-employee-control>
+                            </div>
+                        </div> -->
+                        <div class="col-md-6">
+                            <label for="statusId" class="mb-2 title-control-edit">{{formLabel.customerStatus}}</label>
+                            <div class="form-group">
+                                <app-dropdown (valueChange)="onDropdownSelected($event, 'statusId')"
+                                    [getByIdOptions]="form.get('statusId')?.value"
+                                    [apiGetOptions]="geCusStatusOptions$">
+                                </app-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label for="" class="mb-2 title-control-edit">{{formLabel.note}}</label>
+                            <div class="form-group">
+                                <textarea  formControlName="note" id="note" type="text" class="form-control input-default "></textarea>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </form>
+    </ng-template>
+</div>

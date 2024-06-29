@@ -1,0 +1,110 @@
+<div class="app-sys-user-edit-container">
+    <app-base-page-edit 
+        [width]="1000" 
+        [class.modal-mode-container]="modalMode" 
+        [crud]="crud" 
+        [isModalMode]="modalMode" 
+        [main]="main" 
+        [title]="title" 
+        [formGroup]="form"
+        (onInitialValueStringReady)="onFormReinit($event)"
+    ></app-base-page-edit>
+    <ng-template #main>
+        <form [formGroup]="form">
+            <div class="row w-100">
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="groupId" class="mb-2 font-weight-bold required">Nhóm tài khoản</label>
+                        <div class="form-group">
+                            <div>
+                                <app-dropdown (valueChange)="onDropdownSelected($event, 'groupId')" 
+                                              [getByIdOptions]="form.get('groupId')?.value" 
+                                              [apiGetOptions]="getListTypeOptions$">
+                                </app-dropdown>
+                            </div>
+                        </div>
+                        @if (form.get('groupId')?.hasError('required') && !form.get('groupId')?.untouched) {
+                            <span class="input-error">
+                                Bắt buộc chọn
+                            </span>
+                        }
+                    </div>
+                    <div class="mb-3">
+                        <label for="username" class="mb-2 font-weight-bold required">Tài khoản</label>
+                        <div class="form-group">
+                            <input formControlName="username" id="username" type="text" class="form-control input-default">
+                                @if (form.get('username')?.hasError('required') && !form.get('username')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                }
+                               
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fullname" class="mb-2 font-weight-bold required">Họ và tên</label>
+                        <div class="form-group">
+                            <input formControlName="fullname" id="fullname" type="text" class="form-control input-default ">
+                                @if (form.get('fullname')?.hasError('required') && !form.get('fullname')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                }
+                               
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="employeeId" class="mb-2 font-weight-bold">NV</label>
+                        <div class="form-group">
+                            <div>
+                                <base-employee-control (selectedIdChange)="onDropdownSelected($event, 'employeeId')"
+                                    [getByIdOptions]="form.get('employeeId')?.value"
+                                    [top]="-20"
+                                    [isModalMode]="false"
+                                    [left]="0">
+                                </base-employee-control>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="decentralizationList" class="mb-2 font-weight-bold">Phân quyền</label>
+                        <div class="form-group">
+                            <div>
+                                <app-base-checklist (valueChange)="onDropdownSelected($event, 'decentralizationList')"
+                                    [getByIdOptionCheckLists]="form.get('decentralizationList')?.value"
+                                    [apiGetOptions]="getMenuOptions$">
+                                </app-base-checklist>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="mb-2 font-weight-bold required">Mật khẩu</label>
+                        <div class="form-group">
+                            <input formControlName="password" id="password" type="text" class="form-control input-default">
+                                @if (form.get('password')?.hasError('required') && !form.get('password')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                }
+                               
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rePassword" class="mb-2 font-weight-bold required">Nhập lại mật khẩu</label>
+                        <div class="form-group">
+                            <input formControlName="rePassword" id="rePassword" type="text" class="form-control input-default ">
+                                @if (form.get('rePassword')?.hasError('required') && !form.get('rePassword')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                }
+                               
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+</div>

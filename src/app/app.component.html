@@ -1,0 +1,11 @@
+@if (!authenticated && isExpiration == true) {
+<app-login></app-login>
+}
+@if (!!authenticated || isExpiration == false) {
+<app-applayout></app-applayout>
+}
+
+@if (!!loading) {
+<app-pre-loader></app-pre-loader>
+}
+

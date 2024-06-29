@@ -1,0 +1,137 @@
+<div class="app-card-info-edit-container">
+    <app-base-page-edit [width]="1000!" [class.modal-mode-container]="modalMode" [crud]="crud" [isModalMode]="modalMode"
+        [main]="main" [title]="title" [formGroup]="form"
+        (onInitialValueStringReady)="onFormReinit($event)"></app-base-page-edit>
+    <ng-template #main>
+        <form [formGroup]="form">
+            <div class="row w-100">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="code" class="mb-2 title-control-edit required">{{formLabel.code}}</label>
+                                <div class="form-group">
+                                    <input formControlName="code" id="code" type="text" placeholder="Card code will be spontaneously arising"
+                                        class="form-control input-default " readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="cardTypeId" class="mb-2 title-control-edit required">{{formLabel.cardType}}</label>
+                                <div class="form-group">
+                                    <app-dropdown (valueChange)="onDropdownSelected($event, 'cardTypeId')" 
+                                        [getByIdOptions]="form.get('cardTypeId')?.value" 
+                                        [apiGetOptions]="getCardTypeOptions$">
+                                    </app-dropdown>
+                                </div>
+                                @if (form.get('cardTypeId')?.hasError('required') && !form.get('cardTypeId')?.untouched) {
+                                <span class="input-error">
+                                    {{ErrorMessage.required}}
+                                </span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="effectedDate" class="mb-2 title-control-edit required">{{formLabel.effectedDate}}</label>
+                                <div class="form-group">
+                                    <input formControlName="effectedDate" id="effectedDate" type="date"
+                                        class="form-control input-default">
+                                    @if (form.get('effectedDate')?.hasError('required') && !form.get('effectedDate')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="expiredDate" class="mb-2 title-control-edit required">{{formLabel.expiredDate}}</label>
+                                <div class="form-group">
+                                    <input formControlName="expiredDate" id="effectDate" type="date"
+                                        class="form-control input-default">
+                                    @if (form.get('expiredDate')?.hasError('required') && !form.get('expiredDate')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-3 d-flex">
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                    <input type="checkbox" formControlName="wardrobe"
+                                        class="custom-control-input form-control" id="wardrobe">
+                                    <label class="custom-control-label" for="wardrobe"></label>
+                                </div>
+                            </div>
+                            <label for="wardrobe" class="mb-2 title-control-edit">{{formLabel.wardrobe}}</label>
+                        </div>
+                        <div class="col-md-3 d-flex">
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                    <input type="checkbox" formControlName="isHavePt"
+                                        class="custom-control-input form-control" id="isHavePt">
+                                    <label class="custom-control-label" for="isHavePt"></label>
+                                </div>
+                            </div>
+                            <label for="isHavePt" class="mb-2 title-control-edit">{{formLabel.isHavePt}}</label>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="shiftId" class="mb-2 title-control-edit required">{{formLabel.shift}}</label>
+                                <div class="form-group">
+                                    <app-dropdown (valueChange)="onDropdownSelected($event, 'shiftId')" 
+                                        [getByIdOptions]="form.get('shiftId')?.value" 
+                                        [apiGetOptions]="getGymShiftOptions$">
+                                    </app-dropdown>
+                                    @if (form.get('shiftId')?.hasError('required') && !form.get('shiftId')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="price" class="mb-2 title-control-edit required">{{formLabel.price}}</label>
+                                <div class="form-group">
+                                    <input formControlName="price" id="price" type="text"
+                                        class="form-control input-default ">
+                                    @if (form.get('price')?.hasError('required') && !form.get('price')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="note" class="mb-2 title-control-edit">{{formLabel.note}}</label>
+                                <div class="form-group">
+                                    <input formControlName="note" id="note" type="text"
+                                        class="form-control input-default ">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </form>
+    </ng-template>
+</div>

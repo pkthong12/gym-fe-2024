@@ -1,0 +1,138 @@
+<div class="app-goods-discount-voucher-edit-container">
+    <app-base-page-edit 
+        [width]="1000" 
+        [class.modal-mode-container]="modalMode" 
+        [crud]="crud" 
+        [isModalMode]="modalMode"
+        [main]="main" 
+        [title]="title" 
+        [formGroup]="form"
+        (onInitialValueStringReady)="onFormReinit($event)"
+    ></app-base-page-edit>
+    <ng-template #main>
+        <form [formGroup]="form">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row row-control justify-content-between">
+                        <div class="col-md-6">
+                            <label for="discountTypeId" class="mb-2 title-control-edit required">{{formLabel.voucherType}}</label>
+                            <div class="form-group">
+                                <app-dropdown (valueChange)="onDropdownSelected($event, 'discountTypeId')" 
+                                              [getByIdOptions]="form.get('discountTypeId')?.value" 
+                                              [apiGetOptions]="getListDiscountTypeIdOptions$">
+                                </app-dropdown>
+                                @if (form.get('discountTypeId')?.hasError('required') && !form.get('discountTypeId')?.untouched) {
+                                <span class="input-error">
+                                    {{ErrorMessage.required}}
+                                </span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-control justify-content-between">
+                        <div class="col-md-6">
+                            <label for="code" class="mb-2 title-control-edit required">{{formLabel.code}}</label>
+                            <div class="form-group">
+                                <input formControlName="code" id="code" type="text" class="form-control input-default" placeholder="Mã thiết bị sẽ được tự phát sinh" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="name" class="mb-2 title-control-edit required">{{formLabel.name}}</label>
+                            <div class="form-group">
+                                <input formControlName="name" id="name" type="text" class="form-control input-default "
+                                    placeholder="">
+                                @if (form.get('name')?.hasError('required') && !form.get('name')?.untouched) {
+                                <span class="input-error">
+                                    {{ErrorMessage.required}}
+                                </span>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-control justify-content-between">
+                        <div class="col-md-12">
+                            <label for="manufacturer" class="mb-2 title-control-edit">Nhà sản xuất</label>
+                            <div class="form-group">
+                                <input formControlName="manufacturer" id="manufacturer" type="text" class="form-control input-default "
+                                    placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="row row-control justify-content-between">
+                        <div class="col-md-6">
+                            <label for="purchaseDate" class="mb-2 title-control-edit required">Ngày mua</label>
+                            <div class="form-group">
+                                <input formControlName="purchaseDate" id="purchaseDate" type="date"
+                                    class="form-control input-default " placeholder="">
+                                @if (form.get('purchaseDate')?.hasError('required') && !form.get('purchaseDate')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="warrantyExpiryDate" class="mb-2 title-control-edit required">Ngày hết bảo hành</label>
+                            <div class="form-group">
+                                <input formControlName="warrantyExpiryDate" id="warrantyExpiryDate" type="date" class="form-control input-default "
+                                    placeholder="">
+                                @if (form.get('warrantyExpiryDate')?.hasError('required') && !form.get('warrantyExpiryDate')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-control justify-content-between">
+                        <div class="col-md-6">
+                            <label for="managerId" class="mb-2 title-control-edit required">Người quản lý</label>
+                            <div class="form-group">
+                                <base-employee-control (selectedIdChange)="onDropdownSelected($event, 'managerId')"
+                                    [hiddenLeft]="true"
+                                    [constValue]="10040"
+                                    [getByIdOptions]="form.get('managerId')?.value" [top]="-22" [isModalMode]="true"
+                                    [left]="-15">
+                                </base-employee-control>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="cost" class="mb-2 title-control-edit required">Giá tiền</label>
+                            <div class="form-group">
+                                <input formControlName="cost" id="cost" type="number"
+                                    class="form-control input-default " placeholder="">
+                                @if (form.get('cost')?.hasError('required') && !form.get('cost')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                    }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-control justify-content-between">
+                        <div class="col-md-12">
+                            <label for="address" class="mb-2 title-control-edit">Vị trí đặt</label>
+                            <div class="form-group">
+                                <input formControlName="address" id="address" type="text"
+                                    class="form-control input-default " placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-control justify-content-between">
+                        <div class="col-md-12">
+                            <label for="note" class="mb-2 title-control-edit">{{formLabel.note}}</label>
+                            <div class="form-group">
+                                <input formControlName="note" id="note" type="text"
+                                    class="form-control input-default " placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+</div>

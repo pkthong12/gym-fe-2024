@@ -1,0 +1,91 @@
+<div class="app-gym-shift-edit-container">
+    <app-base-page-edit [width]="1000" [class.modal-mode-container]="modalMode" [crud]="crud" [isModalMode]="modalMode"
+        [main]="main" [title]="title" [formGroup]="form"
+        (onInitialValueStringReady)="onFormReinit($event)"></app-base-page-edit>
+    <ng-template #main>
+        <form [formGroup]="form">
+            <div class="row w-100">
+                <div class="col-md-12">
+                    <div class="mb-3 d-none">
+                        <label for="id" class="mb-2 font-weight-bold required">id</label>
+                        <div class="form-group">
+                            <input formControlName="id" id="id" type="text" class="form-control input-default ">
+                        </div>
+                    </div>
+                    <div class="mb-3 d-none">
+                        <label for="isActive" class="mb-2 font-weight-bold required">isActive</label>
+                        <div class="form-group">
+                            <input formControlName="isActive" id="isActive" type="text"
+                                class="form-control input-default ">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="code" class="mb-2 font-weight-bold required">{{formLabel.code}}</label>
+                        <div class="form-group">
+                            <input formControlName="code" id="code" type="text" class="form-control input-default" placeholder="Shift code will be spontaneously arising" readonly>
+                            @if (form.get('code')?.hasError('required') && !form.get('code')?.untouched) {
+                            <span class="input-error">
+                                {{ErrorMessage.required}}
+                            </span>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="mb-2 font-weight-bold required">{{formLabel.name}}</label>
+                        <div class="form-group">
+                            <input formControlName="name" id="name" type="text" class="form-control input-default">
+                            @if (form.get('name')?.hasError('required') && !form.get('name')?.untouched) {
+                            <span class="input-error">
+                                {{ErrorMessage.required}}
+                            </span>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="totalDays" class="mb-2 font-weight-bold">{{formLabel.totalDays}}</label>
+                        <div class="form-group">
+                            <input formControlName="totalDays" id="totalDays" type="text"
+                                class="form-control input-default ">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="hoursStart" class="mb-2 font-weight-bold required">{{formLabel.hoursStart}}</label>
+                        <div class="form-group">
+                            <input formControlName="hoursStart" id="hoursStart" type="time"
+                                class="form-control input-default">
+                            @if (form.get('hoursStart')?.hasError('required') && !form.get('hoursStart')?.untouched) {
+                            <span class="input-error">
+                                {{ErrorMessage.required}}
+                            </span>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="hoursEnd" class="mb-2 font-weight-bold required">{{formLabel.hoursEnd}}</label>
+                        <div class="form-group">
+                            <input formControlName="hoursEnd" id="hoursEnd" type="time"
+                                class="form-control input-default">
+                            @if (form.get('hoursEnd')?.hasError('required') && !form.get('hoursEnd')?.untouched) {
+                            <span class="input-error">
+                                {{ErrorMessage.required}}
+                            </span>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="note" class="mb-2 font-weight-bold">{{formLabel.note}}</label>
+                        <div class="form-group">
+                            <input formControlName="note" id="note" type="text" class="form-control input-default ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+</div>

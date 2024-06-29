@@ -1,0 +1,263 @@
+<div class="app-card-issuance-edit-container">
+    <app-base-page-edit [width]="1000!" [class.modal-mode-container]="modalMode" [crud]="crud" [isModalMode]="modalMode"
+        [main]="main" [title]="title" [formGroup]="form"
+        (onInitialValueStringReady)="onFormReinit($event)"></app-base-page-edit>
+    <ng-template #main>
+        <form [formGroup]="form">
+            <div class="row w-100">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="documentNumber" class="mb-2 title-control-edit required">{{formLabel.documentNumber}}</label>
+                                <div class="form-group">
+                                    <input formControlName="documentNumber" id="documentNumber" type="text"
+                                        placeholder="Document Number will be spontaneously arising"
+                                        class="form-control input-default " readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="documentDate" class="mb-2 title-control-edit required">{{formLabel.documentDate}}</label>
+                                <div class="form-group">
+                                    <input formControlName="documentDate" id="documentDate" type="date"
+                                        class="form-control input-default ">
+                                </div>
+                                @if (form.get('documentDate')?.hasError('required') &&
+                                !form.get('documentDate')?.untouched) {
+                                <span class="input-error">
+                                    {{ErrorMessage.required}}
+                                </span>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="customerCode" class="mb-2 title-control-edit required">{{formLabel.customerCode}}</label>
+                                <div>
+                                    <base-customer-control
+                                        (selectedDataChange)="selectedDataChange($event, 'customerName','fullName')"
+                                        (selectedIdChange)="onDropdownSelected($event, 'customerId')"
+                                        [getByIdOptions]="form.get('customerId')?.value" [showFrom]="'code'" [top]="-8"
+                                        [isModalMode]="false" [left]="-235">
+                                    </base-customer-control>
+                                    @if (form.get('customerId')?.hasError('required') && !form.get('customerId')?.untouched) {
+                                        <span class="input-error">
+                                            {{ErrorMessage.required}}
+                                        </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="customerName" class="mb-2 title-control-edit">{{formLabel.customerName}}</label>
+                                <div class="form-group">
+                                    <input formControlName="customerName" id="customerName" type="text"
+                                        class="form-control input-default " readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label for="cardId" class="mb-2 title-control-edit required">{{formLabel.card}}</label>
+                            <div class="form-group">
+                                <app-dropdown (valueChange)="onDropdownSelected($event, 'cardId')"
+                                    [getByIdOptions]="form.get('cardId')?.value" [apiGetOptions]="getListCardOptions$">
+                                </app-dropdown>
+                                @if (form.get('cardId')?.hasError('required') && !form.get('cardId')?.untouched) {
+                                <span class="input-error">
+                                    {{ErrorMessage.required}}
+                                </span>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="practiceTime" class="mb-2 title-control-edit">{{formLabel.practiceTime}}</label>
+                            <div class="form-group">
+                                <input formControlName="practiceTime" id="practiceTime" type="text"
+                                    class="form-control input-default" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="startDate" class="mb-2 title-control-edit">{{formLabel.startDate}}</label>
+                                <div class="form-group">
+                                    <input formControlName="startDate" id="startDate" type="date"
+                                        class="form-control input-default" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label for="endDate" class="mb-2 title-control-edit">{{formLabel.endDate}}</label>
+                                <div class="form-group">
+                                    <input formControlName="endDate" id="endDate" type="date"
+                                        class="form-control input-default" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label for="hourCard" class="mb-2 title-control-edit">{{formLabel.hourCard}}</label>
+                            <div class="form-group">
+                                <input formControlName="hourCard" id="hourCard" type="number"
+                                    class="form-control input-default" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="hourCardBonus" class="mb-2 title-control-edit">{{formLabel.hourCardBonus}}</label>
+                            <div class="form-group">
+                                <input formControlName="hourCardBonus" id="hourCardBonus" type="number"
+                                    class="form-control input-default">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="totalHourCard" class="mb-2 title-control-edit">{{formLabel.totalHourCard}}</label>
+                            <div class="form-group">
+                                <input formControlName="totalHourCard" id="totalHourCard" type="number"
+                                    class="form-control input-default" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="perSellId" class="mb-2 title-control-edit">{{formLabel.perSell}}</label>
+                            <div class="form-group">
+                                <base-employee-control (selectedIdChange)="onDropdownSelected($event, 'perSellId')"
+                                    [hiddenLeft]="true"
+                                    [constValue]="10040"
+                                    [getByIdOptions]="form.get('perSellId')?.value" [top]="-19" [isModalMode]="false"
+                                    [left]="-335">
+                                </base-employee-control>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3 d-flex align-items-center">
+                            <div class="form-group pe-none">
+                                <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                    <input type="checkbox" formControlName="wardrobe" readonly
+                                        class="custom-control-input form-control" id="wardrobe">
+                                    <label class="custom-control-label" for="wardrobe"></label>
+                                </div>
+                            </div>
+                            <label class="mb-2 title-control-edit">{{formLabel.wardrobe}}</label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="lockerId" class="mb-2 title-control-edit">{{formLabel.locker}}</label>
+                            <div class="form-group">
+                                <app-dropdown (valueChange)="onDropdownSelected($event, 'lockerId')"
+                                    [disableSelect]="!form.get('wardrobe')?.value"
+                                    [getByIdOptions]="form.get('lockerId')?.value" [apiGetOptions]="getListLockerOptions$">
+                                </app-dropdown>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 d-flex align-items-center">
+                            <div class="form-group pe-none">
+                                <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                    <input type="checkbox" formControlName="isHavePt" readOnly 
+                                        class="custom-control-input form-control" id="isHavePt">
+                                    <label class="custom-control-label" for="isHavePt"></label>
+                                </div>
+                            </div>
+                            <label class="mb-2 title-control-edit">{{formLabel.isHavePt}}</label>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="perPtId" class="mb-2 title-control-edit">{{formLabel.perPt}}</label>
+                            <div class="form-group">
+                                <base-employee-control (selectedIdChange)="onDropdownSelected($event, 'perPtId')"
+                                    [hiddenLeft]="true"
+                                    [constValue]="21"
+                                    [getByIdOptions]="form.get('perPtId')?.value" [top]="-25" [isModalMode]="false"
+                                    [disableSelect]="!form.get('isHavePt')?.value" [left]="-335">
+                                </base-employee-control>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label for="cardPrice" class="mb-2 title-control-edit">{{formLabel.cardPrice}}</label>
+                            <div class="form-group">
+                                <input formControlName="cardPrice" id="cardPrice" type="text" readonly
+                                    class="form-control input-default ">
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="percentVat" class="mb-2 title-control-edit">{{formLabel.percentVat}}</label>
+                            <div class="form-group">
+                                <input formControlName="percentVat" id="percentVat" type="number"
+                                    class="form-control input-default ">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="totalPrice" class="mb-2 title-control-edit required">{{formLabel.totalPrice}}</label>
+                            <div class="form-group">
+                                <input formControlName="totalPrice" id="totalPrice" type="text" readonly
+                                    class="form-control input-default ">
+                                @if (form.get('totalPrice')?.hasError('required') && !form.get('totalPrice')?.untouched) {
+                                <span class="input-error">
+                                    {{ErrorMessage.required}}
+                                </span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label for="percentDiscount" class="mb-2 title-control-edit">{{formLabel.percentDiscount}}</label>
+                            <div class="form-group">
+                                <input formControlName="percentDiscount" id="percentDiscount" type="number"
+                                    class="form-control input-default ">
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="afterDiscount" class="mb-2 title-control-edit">{{formLabel.afterDiscount}}</label>
+                            <div class="form-group">
+                                <input formControlName="afterDiscount" id="afterDiscount" type="number"
+                                    class="form-control input-default " readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="moneyHavePay" class="mb-2 title-control-edit">{{formLabel.moneyHavePay}}</label>
+                            <div class="form-group">
+                                <input formControlName="moneyHavePay" id="moneyHavePay" type="number" readonly
+                                    class="form-control input-default ">
+
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="paidMoney" class="mb-2 title-control-edit">{{formLabel.paidMoney}}</label>
+                            <div class="form-group">
+                                <input formControlName="paidMoney" id="paidMoney" type="number"
+                                    class="form-control input-default ">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label for="" class="mb-2 title-control-edit">{{formLabel.note}}</label>
+                            <div class="form-group">
+                                <textarea formControlName="note" id="note" type="text"
+                                    class="form-control input-default "></textarea>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </div>
+        </form>
+    </ng-template>
+</div>

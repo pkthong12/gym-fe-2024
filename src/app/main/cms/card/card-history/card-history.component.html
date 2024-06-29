@@ -1,0 +1,39 @@
+<div class="card-history-container">
+    <app-base-page-list 
+        [outerInOperators]="outerInOperators"
+        [title]="title" 
+        [columns]="columns" 
+        [buttons]="showButtons" 
+        [apiDefinition]="apiQueryList"
+        [left]="left"
+    ></app-base-page-list>
+    <ng-template #left>
+        <div class="card-body chat-wrapper p-0">
+            <div class="chat-left-sidebar">
+                <div class="d-flex chat-fix-search align-items-center">
+                    <div class="input-group message-search-area">
+                        <input [(ngModel)]="searchType" appDebounce  (debounceKeyUp)="onSearchCardCode($event)" type="text" class="form-control" placeholder="Search here..">
+                    </div>
+                </div>
+                <div class="card-body message-bx px-0 pt-3" [ngStyle]="{
+                    maxHeight: appLayoutService.tableHeight + 'px',
+                    overflowX: 'overlay'
+                }">
+                    <div class="tab-content dz-scroll table">
+                        @for (item of cardCodeOptionShow; track $index) {
+                            <div (click)="onSelectedCardCodeChanged(item)" class="tab-pane fade show active" > <!--  dfsd-->
+                                <div class="chat-list-area" [class.active]="currentCode == item.code">
+                                    <div class="info-body">
+                                        <div class="d-flex">
+                                            <h4 class="text-black user-name mb-0 font-w300 fs-16">{{item.code}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

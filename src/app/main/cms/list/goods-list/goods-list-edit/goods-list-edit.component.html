@@ -1,0 +1,234 @@
+<div class="app-per-customer-edit-container">
+    <app-base-page-edit 
+        [width]="1000!" 
+        [class.modal-mode-container]="modalMode" 
+        [crud]="crud" 
+        [isModalMode]="modalMode"
+        [main]="main" 
+        [title]="title" [formGroup]="form"
+        (onInitialValueStringReady)="onFormReinit($event)"
+    ></app-base-page-edit>
+    <ng-template #main>
+        <form [formGroup]="form">
+            <div class="row w-100">
+                <div class="col-md-12">
+                    <div class="mb-3 d-none">
+                        <label for="id" class="mb-2 title-control-edit required">id</label>
+                        <div class="form-group">
+                            <input formControlName="id" id="id" type="text" class="form-control input-default ">
+                            @if (form.get('id')?.hasError('required') && !form.get('id')?.untouched) {
+                            <span class="input-error">
+                                {{ErrorMessage.required}}
+                            </span>
+                            }
+
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-12"> -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="code" class="mb-2 title-control-edit">{{formLabel.code}}</label>
+                                <div class="form-group">
+                                    <input formControlName="code" id="code" type="text"
+                                        class="form-control input-default" placeholder="Product code will be auto-generated" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="name" class="mb-2 title-control-edit required">{{formLabel.name}}</label>
+                                <div class="form-group">
+                                    <input formControlName="name" id="name" type="text"
+                                        class="form-control input-default ">
+                                    @if (form.get('name')?.hasError('required') && !form.get('name')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="productTypeId" class="mb-2 title-control-edit required">{{formLabel.productTypeName}}</label>
+                                <div class="form-group">
+                                    <app-dropdown (valueChange)="onDropdownSelected($event, 'productTypeId')"
+                                        [getByIdOptions]="form.get('productTypeId')?.value"
+                                        [apiGetOptions]="productTypeOptions$">
+                                    </app-dropdown>
+                                </div>
+                                @if (form.get('productTypeId')?.hasError('required') &&
+                                !form.get('productTypeId')?.untouched) {
+                                <span class="input-error">
+                                    {{ErrorMessage.required}}
+                                </span>
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="supplier" class="mb-2 title-control-edit">{{formLabel.supplier}}</label>
+                                <div class="form-group">
+                                    <input formControlName="supplier" id="supplier" type="text"
+                                        class="form-control input-default">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="price" class="mb-2 title-control-edit required">{{formLabel.price}}</label>
+                            <div class="form-group">
+                                <input formControlName="price" id="price" type="number"
+                                        class="form-control input-default">
+                                    @if (form.get('price')?.hasError('required') &&
+                                    !form.get('price')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                    }
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="importPrice" class="mb-2 title-control-edit required">{{formLabel.importPrice}}</label>
+                                <div class="form-group">
+                                    <input formControlName="importPrice" id="importPrice" type="number"
+                                        class="form-control input-default">
+                                    @if (form.get('importPrice')?.hasError('required') &&
+                                    !form.get('importPrice')?.untouched) {
+                                    <span class="input-error">
+                                        {{ErrorMessage.required}}
+                                    </span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        
+                        <div class="col-md-6">
+                            <label for="quantity" class="mb-2 title-control-edit">{{formLabel.quantity}}</label>
+                            <div class="form-group">
+                                <input formControlName="quantity" id="quantity" type="number"
+                                    class="form-control input-default">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="measureName" class="mb-2 title-control-edit">{{formLabel.measureName}}</label>
+                            <div class="form-group">
+                                <app-dropdown (valueChange)="onDropdownSelected($event, 'measureId')"
+                                    [getByIdOptions]="form.get('measureId')?.value"
+                                    [apiGetOptions]="measureTypeOptions$">
+                                </app-dropdown>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        
+                        <div class="col-md-6">
+                            <label for="receivingDate" class="mb-2 title-control-edit">{{formLabel.receivingDate}}</label>
+                            <div class="form-group">
+                                <input formControlName="receivingDate" id="receivingDate" type="date" class="form-control input-default">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="expireDate" class="mb-2 title-control-edit">{{formLabel.expireDate}}</label>
+                            <div class="form-group">
+                                <input formControlName="expireDate" id="expireDate" type="date" class="form-control input-default">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="batchNo" class="mb-2 title-control-edit">{{formLabel.batchNo}}</label>
+                            <div class="form-group">
+                                <input formControlName="batchNo" id="batchNo" type="text"
+                                    class="form-control input-default">
+                            </div>
+                        </div>
+                                                
+                        <div class="col-md-6">
+                            <label for="location" class="mb-2 title-control-edit">{{formLabel.location}}</label>
+                            <div class="form-group">
+                                <input formControlName="location" id="location" type="text" class="form-control input-default">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="source" class="mb-2 title-control-edit">{{formLabel.status}}</label>
+                            <div class="form-group">
+                                <app-dropdown (valueChange)="onDropdownSelected($event, 'status')"
+                                    [getByIdOptions]="form.get('status')?.value"
+                                    [apiGetOptions]="statusTypeOptions$">
+                                </app-dropdown>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="managerName" class="mb-2 title-control-edit">{{formLabel.managerName}}</label>
+                            <div class="form-group">
+                                <base-employee-control (selectedIdChange)="onDropdownSelected($event, 'managerId')"
+                                    [hiddenLeft]="true"
+                                    [constValue]="10040"
+                                    [getByIdOptions]="form.get('managerId')?.value" 
+                                    [top]="-35" [isModalMode]="true"
+                                    [left]="-130">
+                                </base-employee-control>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="note" class="mb-2 title-control-edit">{{formLabel.note}}</label>
+                            <div class="form-group">
+                                <input formControlName="note" id="note" type="text" class="form-control input-default">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="warrantyInfor" class="mb-2 title-control-edit">{{formLabel.warrantyInfor}}</label>
+                            <div class="form-group">
+                                <input formControlName="warrantyInfor" id="warrantyInfor" type="text" class="form-control input-default">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="description" class="mb-2 title-control-edit">{{formLabel.description}}</label>
+                            <div class="form-group">
+                                <input formControlName="description" id="description" type="text"
+                                    class="form-control input-default">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="source" class="mb-2 title-control-edit">{{formLabel.source}}</label>
+                            <div class="form-group">
+                                <input formControlName="source" id="source" type="text"
+                                    class="form-control input-default">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <!-- </div> -->
+            </div>
+        </form>
+    </ng-template>
+</div>

@@ -1,0 +1,18 @@
+.row-control{
+     margin: 0;
+     padding: 0;
+     
+     .col-md-6{
+        flex: 0 0 50%;
+        max-width: 48% !important;
+        padding-left: 0;
+        padding-right: 0;
+        
+     }
+     .col-md-12{
+        padding-left: 0;
+        padding-right: 0;
+        
+     }
+
+}

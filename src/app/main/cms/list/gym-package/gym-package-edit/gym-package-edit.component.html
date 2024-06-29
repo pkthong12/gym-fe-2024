@@ -1,0 +1,87 @@
+<div class="app-gym-package-edit-container">
+    <app-base-page-edit [width]="600" [class.modal-mode-container]="modalMode" [crud]="crud" [isModalMode]="modalMode"
+        [main]="main" [title]="title" [formGroup]="form"
+        (onInitialValueStringReady)="onFormReinit($event)"></app-base-page-edit>
+    <ng-template #main>
+        <form [formGroup]="form">
+            <div class="row w-100">
+                <div class="col-md-12">
+                    <div class="mb-3 d-none">
+                        <label for="isActive" class="mb-2 font-weight-bold">isActive</label>
+                        <div class="form-group">
+                            <input formControlName="isActive" id="isActive" type="text"
+                                class="form-control input-default ">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="code" class="mb-2 font-weight-bold required">{{formLabel.code}}</label>
+                        <div class="form-group">
+                            <input formControlName="code" id="code" type="text" class="form-control input-default">
+                            @if (form.get('code')?.hasError('required') && !form.get('code')?.untouched) {
+                            <span class="input-error">
+                                {{ErrorMessage.required}}
+                            </span>
+                            }
+
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="money" class="mb-2 font-weight-bold required">{{formLabel.money}}</label>
+                        <div class="form-group">
+                            <input formControlName="money" id="money" type="number" class="form-control input-default ">
+                            @if (form.get('money')?.hasError('required') && !form.get('money')?.untouched) {
+                            <span class="input-error">
+                                {{ErrorMessage.required}}
+                            </span>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="mb-3">
+                        <label for="period" class="mb-2 font-weight-bold required">{{formLabel.period}}</label>
+                        <div class="form-group">
+                            <input formControlName="period" id="period" type="number"
+                                class="form-control input-default ">
+                            @if (form.get('period')?.hasError('required') && !form.get('period')?.untouched) {
+                            <span class="input-error">
+                                {{ErrorMessage.required}}
+                            </span>
+                            }
+                            <!-- <base-customer-search></base-customer-search> -->
+                        </div>
+                    </div>
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input formControlName="isPrivate" type="checkbox" class="custom-control-input" id="isPrivate"
+                            required="">
+                        <label class="custom-control-label" for="isPrivate">{{formLabel.isPrivate}}</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="shiftId" class="mb-2 font-weight-bold required">{{formLabel.shiftId}}</label>
+                        <div class="form-group">
+                            <div>
+                                <app-dropdown (valueChange)="onDropdownSelected($event, 'shiftId')"
+                                    [getByIdOptions]="form.get('shiftId')?.value"
+                                    [apiGetOptions]="getListShiftOptions$">
+                                </app-dropdown>
+                            </div>
+                        </div>
+                        @if (form.get('shiftId')?.hasError('required') && !form.get('shiftId')?.untouched) {
+                        <span class="input-error">
+                            {{ErrorMessage.required}}
+                        </span>
+                        }
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="mb-2 font-weight-bold">{{formLabel.description}}</label>
+                        <div class="form-group">
+                            <input formControlName="description" id="description" type="text"
+                                class="form-control input-default ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ng-template>
+</div>

@@ -3,18 +3,6 @@
     <div class="card-header">
         <h4 class="card-title">{{!!!language ? title[0]:title[1]}}</h4>
         <div>
-            <!-- <div [ngStyle]="{
-                    marginRight: 5+'px',
-                }" class="input-group search-area right d-lg-inline-flex d-none">
-                    <input type="search" class="form-control" placeholder="Find something here...">
-                    <div class="input-group-append">
-                        <span [appTooltip]="'Search'" class="input-group-text">
-                            <a href="javascript:void(0)">
-                                <i class="flaticon-381-search-2"></i>
-                            </a>
-                        </span>
-                    </div>
-                </div> -->
             @for (button of showButtons; track $index) {
             <div (click)="onHeaderButtonClick(button.code)" [appTooltip]='button.caption' class="btn btn-sm"><i
                     [class]="button.iconClass"></i></div>
@@ -143,7 +131,8 @@
                                     <select class="custom-select-pagination" [(ngModel)]="selectedSize"
                                         (ngModelChange)="onSizeChange($event)">
                                         <option *ngFor="let size of SizeChanger">{{size}}</option>
-                                    </select> /<span id="totalProduct">{{innerBodyCount$.value}}</span> {{!!!language ? "kết quả":"result"}}
+                                    </select> /<span id="totalProduct">{{innerBodyCount$.value}}</span> {{!!!language ?
+                                    "kết quả":"result"}}
                                 </div>
                                 <div class="col-6">
                                     <ul id="pagination" class="pagination pagination-circle"

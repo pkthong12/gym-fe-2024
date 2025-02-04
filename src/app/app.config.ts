@@ -10,7 +10,7 @@ export const appConfig: ApplicationConfig = {
 };
 
 
-//export const baseUrl: string = 'https://localhost:44360';
-export const baseUrl: string = 'http://gymbackend-001-site1.dtempurl.com'; // BUILD PRODUCT WITH THIS API
-export const language: boolean = true; // true - english, false - vietnamese
+// export const baseUrl: string = 'https://localhost:44360/api';
+export const baseUrl: string = 'https://cuzem3-001-site1.mtempurl.com'; // BUILD PRODUCT WITH THIS API
+export const language: boolean = false; // true - english, false - vietnamese
 

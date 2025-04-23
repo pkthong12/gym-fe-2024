@@ -11,6 +11,6 @@ export const appConfig: ApplicationConfig = {
 
 
 // export const baseUrl: string = 'https://localhost:44360/api';
-export const baseUrl: string = 'https://cuzem3-001-site1.mtempurl.com'; // BUILD PRODUCT WITH THIS API
+export const baseUrl: string = 'https://cuzemm3-001-site1.ntempurl.com/api'; // BUILD PRODUCT WITH THIS API
 export const language: boolean = false; // true - english, false - vietnamese
 

@@ -4,7 +4,7 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyDIBxv9f24dECQtqe4RNL08gFzJr_f9mmg",
   authDomain: "gym-help.firebaseapp.com",
   projectId: "gym-help",

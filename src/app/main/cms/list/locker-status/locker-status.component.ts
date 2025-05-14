@@ -35,7 +35,7 @@ export interface ILocalDataRow {
   styleUrl: './locker-status.component.scss'
 })
 export class LockerStatusComponent extends BaseComponent implements OnInit, AfterViewInit {
-  title: string[]=['Trạng thái tủ','Locker status'];
+  title: string[] = ['Trạng thái tủ', 'Locker status'];
 
   constructor(
     private authService: AuthService,
@@ -50,7 +50,7 @@ export class LockerStatusComponent extends BaseComponent implements OnInit, Afte
     timeClose: 3000,
   };
   data$ = new BehaviorSubject<ILocalDataRow[]>([]);
-  
+
   cellHeight: number = 120;
   monthPickerActive: boolean = false;
   yearPickerActive: boolean = false;
@@ -58,7 +58,7 @@ export class LockerStatusComponent extends BaseComponent implements OnInit, Afte
   @ViewChild('container') container!: ElementRef;
   @ViewChild('calendarContainer') calendarContainer!: ElementRef;
   @ViewChild('calendarBody') calendarBody!: ElementRef;
-  genderId:number = 8;
+  genderId: number = 8;
   override ngOnInit(): void {
     this.resizeStream$ = fromEvent(window, 'resize');
   }
@@ -74,19 +74,19 @@ export class LockerStatusComponent extends BaseComponent implements OnInit, Afte
   override ngAfterViewInit(): void {
     setTimeout(() => {
       this.httpService
-      .makeGetRequest('','/api/GoodsLocker/GetLockerStatus?area='+this.genderId)
-      .subscribe((x) => {
-        if (x.ok && x.status === 200) {
-          const body = x.body;
-          if (body.statusCode === 200) {
-            this.data$.next(body.innerBody.list);
+        .makeGetRequest('', api.GOODS_LOCKER_GET_STATUS + this.genderId)
+        .subscribe((x) => {
+          if (x.ok && x.status === 200) {
+            const body = x.body;
+            if (body.statusCode === 200) {
+              this.data$.next(body.innerBody.list);
+            }
           }
-        }
-      });
+        });
     })
     this.setCssChangeTab();
   }
-  setCssChangeTab(){
+  setCssChangeTab() {
     const rect = this.calendarContainer.nativeElement.getBoundingClientRect();
     const cellWidth = (rect.width - 6 * 70) / 7;
     console.log(cellWidth)
@@ -113,20 +113,20 @@ export class LockerStatusComponent extends BaseComponent implements OnInit, Afte
       );
     });
   }
-  onChangeTab(e:any){
-    if(this.genderId == 8) this.genderId = 9;
+  onChangeTab(e: any) {
+    if (this.genderId == 8) this.genderId = 9;
     else this.genderId = 8;
     setTimeout(() => {
       this.httpService
-      .makeGetRequest('','/api/GoodsLocker/GetLockerStatus?area='+this.genderId)
-      .subscribe((x) => {
-        if (x.ok && x.status === 200) {
-          const body = x.body;
-          if (body.statusCode === 200) {
-            this.data$.next(body.innerBody.list);
+        .makeGetRequest('', api.GOODS_LOCKER_GET_STATUS + this.genderId)
+        .subscribe((x) => {
+          if (x.ok && x.status === 200) {
+            const body = x.body;
+            if (body.statusCode === 200) {
+              this.data$.next(body.innerBody.list);
+            }
           }
-        }
-      });
+        });
     })
   }
 }

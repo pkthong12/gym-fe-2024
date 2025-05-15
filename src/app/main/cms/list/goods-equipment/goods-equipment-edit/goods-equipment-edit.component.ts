@@ -62,16 +62,16 @@ export class GoodsEquipmentEditComponent extends BaseEditComponent implements On
     }
 
     this.formLabel = {
-      code: !!this.language ? 'Mã thiết bị' : 'Equipment Code',
-      equipmentType: !!this.language ? 'Loại thiết bị' : 'Equipment Type',
-      name: !!this.language ? 'Tên thiết bị' : 'Equipment Name',
-      manufacturer: !!this.language ? 'Nhà sản xuất' : 'Manufacturer',
-      purchaseDate: !!this.language ? 'Ngày mua' : 'Purchase Date',
-      warrantyExpiryDate: !!this.language ? 'Ngày hết bảo hành' : 'Warranty Expiry Date',
-      manager: !!this.language ? 'Người quản lý' : 'Manager',
-      cost: !!this.language ? 'Giá tiền' : 'Price',
-      address: !!this.language ? 'Vị trí đặt' : 'Placement location',
-      note: !!this.language ? 'Ghi chú' : 'Note',
+      code: !this.language ? 'Mã thiết bị' : 'Equipment Code',
+      equipmentType: !this.language ? 'Loại thiết bị' : 'Equipment Type',
+      name: !this.language ? 'Tên thiết bị' : 'Equipment Name',
+      manufacturer: !this.language ? 'Nhà sản xuất' : 'Manufacturer',
+      purchaseDate: !this.language ? 'Ngày mua' : 'Purchase Date',
+      warrantyExpiryDate: !this.language ? 'Ngày hết bảo hành' : 'Warranty Expiry Date',
+      manager: !this.language ? 'Người quản lý' : 'Manager',
+      cost: !this.language ? 'Giá tiền' : 'Price',
+      address: !this.language ? 'Vị trí đặt' : 'Placement location',
+      note: !this.language ? 'Ghi chú' : 'Note',
       
     };
   }

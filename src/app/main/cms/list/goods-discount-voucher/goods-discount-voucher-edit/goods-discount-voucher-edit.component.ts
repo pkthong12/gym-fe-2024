@@ -61,15 +61,15 @@ export class GoodsDiscountVoucherEditComponent extends BaseEditComponent impleme
     }
 
     this.formLabel = {
-      code: !!this.language ? 'Mã voucher' : 'Voucher Code',
-      voucherType: !!this.language ? 'Loại voucher' : 'Voucher Type',
-      name: !!this.language ? 'Tên voucher' : 'Voucher Name',
-      dicountValue: !!this.language ? 'Giá trị giảm giá' : 'Discount value',
-      startDate: !!this.language ? 'Ngày bắt đầu' : 'Start Date',
-      endDate: !!this.language ? 'Ngày kết thúc' : 'End Date',
-      issueQuantity: !!this.language ? 'Số lượng phát hành' : 'Issue quantity',
-      usedQuantity: !!this.language ? 'Số lượng đã sử dụng' : 'Quantity used',
-      note: !!this.language ? 'Ghi chú' : 'Note',
+      code: !this.language ? 'Mã voucher' : 'Voucher Code',
+      voucherType: !this.language ? 'Loại voucher' : 'Voucher Type',
+      name: !this.language ? 'Tên voucher' : 'Voucher Name',
+      dicountValue: !this.language ? 'Giá trị giảm giá' : 'Discount value',
+      startDate: !this.language ? 'Ngày bắt đầu' : 'Start Date',
+      endDate: !this.language ? 'Ngày kết thúc' : 'End Date',
+      issueQuantity: !this.language ? 'Số lượng phát hành' : 'Issue quantity',
+      usedQuantity: !this.language ? 'Số lượng đã sử dụng' : 'Quantity used',
+      note: !this.language ? 'Ghi chú' : 'Note',
       
     };
   }

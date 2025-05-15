@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable, of } from 'rxjs';
 import { DialogService } from '../../services/dialog.service';
 import { errorMessage } from '../../constants/error-control'
+import { AppConfigService } from '../../services/app-config.service';
 
 @Component({
   selector: 'app-base-edit',
@@ -19,9 +20,11 @@ export class BaseEditComponent {
   entityTable!: string;
   showModal: boolean = false;
   ignoreDeactivate: boolean = false;
+  #appService = inject(AppConfigService);
   constructor(
     public dialogService: DialogService
   ) { 
+    this.language = this.#appService.LANGUAGE;
   }
 
   canDeactivate(): Observable<boolean> | boolean {
@@ -29,7 +32,6 @@ export class BaseEditComponent {
     if (condition || this.ignoreDeactivate === true) {
       return true;
     } else {
-      console.log("show-dialog");
       this.dialogService.busy = true;
       this.dialogService.showConfirmDialog$.next(true);
       this.dialogService.title$.next("XÁC NHẬN");

@@ -1,30 +1,30 @@
 <ul class="metismenu" id="menu">
-    <li class="nav-label first">{{!!!language ? "Menu chính": "Main Menu"}}</li>
+    <li class="nav-label first">{{!language ? "Menu chính": "Main Menu"}}</li>
     <li *ngIf="data.includes('1')">
         <a class="ai-icon" [routerLink]="['']" aria-expanded="false">
             <i class="flaticon-144-layout"></i>
-            <span class="nav-text">{{!!!language ? "Trang chủ": "Home"}}</span>
+            <span class="nav-text">{{!language ? "Trang chủ": "Home"}}</span>
         </a>
     </li>
-    <li class="nav-label">{{!!!language ? "Thành phần": "Ingredient"}}</li>
+    <li class="nav-label">{{!language ? "Thành phần": "Ingredient"}}</li>
     <li *ngIf="data.includes('2')">
         <a class="has-arrow ai-icon" href="" aria-expanded="false">
             <i class="flaticon-165-menu"></i>
-            <span class="nav-text">{{!!!language ? "Quản lý khách hàng": "Customer Management"}}</span>
+            <span class="nav-text">{{!language ? "Quản lý khách hàng": "Customer Management"}}</span>
         </a>
         <ul aria-expanded="false">
-            <li *ngIf="data.includes('3')"><a [routerLink]="['/cms/profile/per-customer']">{{!!!language ? "Thông tin khách hàng": "Customer Information"}}</a></li>
-            <!-- <li *ngIf="data.includes('4')"><a [routerLink]="['/cms/profile/per-customer-transaction']"> {{!!!language ? "Giao dịch với khách hàng": "Transactions With Customers"}}</a></li> -->
-            <li *ngIf="data.includes('5')"><a [routerLink]="['/cms/profile/per-customer-list-card']">{{!!!language ? "Danh sách các thẻ được cấp": "List Of Cards Issued"}}</a></li>
+            <li *ngIf="data.includes('3')"><a [routerLink]="['/cms/profile/per-customer']">{{!language ? "Thông tin khách hàng": "Customer Information"}}</a></li>
+            <!-- <li *ngIf="data.includes('4')"><a [routerLink]="['/cms/profile/per-customer-transaction']"> {{!language ? "Giao dịch với khách hàng": "Transactions With Customers"}}</a></li> -->
+            <li *ngIf="data.includes('5')"><a [routerLink]="['/cms/profile/per-customer-list-card']">{{!language ? "Danh sách các thẻ được cấp": "List Of Cards Issued"}}</a></li>
         </ul>
     </li>
     <li *ngIf="data.includes('6')">
         <a class="has-arrow ai-icon" href="" aria-expanded="false">
             <i class="flaticon-381-user-3"></i>
-            <span class="nav-text">{{!!!language ? "Quản lý nhân viên": "Employee Management"}}</span>
+            <span class="nav-text">{{!language ? "Quản lý nhân viên": "Employee Management"}}</span>
         </a>
         <ul aria-expanded="false">
-            <li *ngIf="data.includes('7')"><a [routerLink]="['/cms/profile/employees']">{{!!!language ? "Danh sách nhân viên": "List Of Employee"}}</a></li>
+            <li *ngIf="data.includes('7')"><a [routerLink]="['/cms/profile/employees']">{{!language ? "Danh sách nhân viên": "List Of Employee"}}</a></li>
             <!-- <li *ngIf="data.includes('6')"><a href="">Thông tin giao dịch</a></li> -->
             <!-- <li *ngIf="data.includes('6')"><a href="">Lịch sử hội viên</a></li> -->
             <!-- <li *ngIf="data.includes('6')"><a href="">Ngày sinh nhật khách</a></li> -->
@@ -34,34 +34,34 @@
     <li *ngIf="data.includes('8')">
         <a class="has-arrow ai-icon" href="" aria-expanded="false">
             <i class="flaticon-381-id-card"></i>
-            <span class="nav-text">{{!!!language ? "Quản lý vật chất": "Material Management"}}</span>
+            <span class="nav-text">{{!language ? "Quản lý vật chất": "Material Management"}}</span>
         </a>
         <ul aria-expanded="false">
-            <li *ngIf="data.includes('9')"><a [routerLink]="['/cms/list/goods-equipment']">{{!!!language ? "Danh sách thiết bị": "Material List"}}</a></li>
-            <li *ngIf="data.includes('10')"><a [routerLink]="['/cms/list/goods-equipment-fix']">{{!!!language ? "Danh sách bảo trì/sửa chữa thiết bị": "List of equipment maintenance/repair"}}</a></li>
-            <li *ngIf="data.includes('11')"><a [routerLink]="['/cms/list/goods-list']">{{!!!language ? "Danh sách hàng hóa": "List of Goods"}}</a></li>
+            <li *ngIf="data.includes('9')"><a [routerLink]="['/cms/list/goods-equipment']">{{!language ? "Danh sách thiết bị": "Material List"}}</a></li>
+            <li *ngIf="data.includes('10')"><a [routerLink]="['/cms/list/goods-equipment-fix']">{{!language ? "Danh sách bảo trì/sửa chữa thiết bị": "List of equipment maintenance/repair"}}</a></li>
+            <li *ngIf="data.includes('11')"><a [routerLink]="['/cms/list/goods-list']">{{!language ? "Danh sách hàng hóa": "List of Goods"}}</a></li>
             <!-- <li *ngIf="data.includes('6')"><a href="">Danh sách sản phẩm, NVL</a></li> -->
-            <li *ngIf="data.includes('12')"><a [routerLink]="['/cms/list/gym-shift']">{{!!!language ? "Danh sách Ca tập": "List of Workout Session"}}</a></li>
+            <li *ngIf="data.includes('12')"><a [routerLink]="['/cms/list/gym-shift']">{{!language ? "Danh sách Ca tập": "List of Workout Session"}}</a></li>
             <!-- <li *ngIf="data.includes('13')"><a [routerLink]="['/cms/list/gym-package']">Danh sách Gói tập</a></li> -->
             <!-- <li *ngIf="data.includes('6')"><a href="">Danh sách Locker</a></li> -->
-            <li *ngIf="data.includes('13')"><a [routerLink]="['/cms/list/locker']">{{!!!language ? "Danh sách tủ": "List of Locker"}}</a></li>
-            <li *ngIf="data.includes('13')"><a [routerLink]="['/cms/list/locker-status']">{{!!!language ? "Trạng thái tủ": "Locker Status"}}</a></li>
+            <li *ngIf="data.includes('13')"><a [routerLink]="['/cms/list/locker']">{{!language ? "Danh sách tủ": "List of Locker"}}</a></li>
+            <li *ngIf="data.includes('13')"><a [routerLink]="['/cms/list/locker-status']">{{!language ? "Trạng thái tủ": "Locker Status"}}</a></li>
         </ul>
     </li>
     <li *ngIf="data.includes('17')">
         <a class="has-arrow ai-icon" href="" aria-expanded="false">
             <i class="flaticon-381-id-card"></i>
-            <span class="nav-text">{{!!!language ? "Quản lý thẻ": "Card Management"}}</span>
+            <span class="nav-text">{{!language ? "Quản lý thẻ": "Card Management"}}</span>
         </a>
         <ul aria-expanded="false">
-            <li *ngIf="data.includes('18')"><a [routerLink]="['/cms/card/card-check-in']">{{!!!language ? "Check In bằng thẻ": "Check In by Card"}}</a></li>
+            <li *ngIf="data.includes('18')"><a [routerLink]="['/cms/card/card-check-in']">{{!language ? "Check In bằng thẻ": "Check In by Card"}}</a></li>
             <!-- <li *ngIf="data.includes('19')"><a [routerLink]="['/cms/list/card-check-in']">Danh sách thẻ Check in</a> -->
             <!-- </li> -->
-            <li *ngIf="data.includes('19')"><a [routerLink]="['/cms/card/card-issuance']">{{!!!language ? "Cấp thẻ": "Card Issuance"}}</a></li>
+            <li *ngIf="data.includes('19')"><a [routerLink]="['/cms/card/card-issuance']">{{!language ? "Cấp thẻ": "Card Issuance"}}</a></li>
             <!-- <li *ngIf="data.includes('6')"><a href="">Tình trạng Locker</a></li> -->
             <!-- <li *ngIf="data.includes('6')"><a href="">Thuê tủ</a></li> -->
-            <li *ngIf="data.includes('20')"><a [routerLink]="['/cms/card/card-info']">{{!!!language ? "Danh sách thẻ": "List of Card"}}</a></li>
-            <li *ngIf="data.includes('26')"><a [routerLink]="['/cms/card/card-history']">{{!!!language ? "Lịch sử chỉnh sửa thẻ": "Card Change History"}}</a></li>
+            <li *ngIf="data.includes('20')"><a [routerLink]="['/cms/card/card-info']">{{!language ? "Danh sách thẻ": "List of Card"}}</a></li>
+            <li *ngIf="data.includes('26')"><a [routerLink]="['/cms/card/card-history']">{{!language ? "Lịch sử chỉnh sửa thẻ": "Card Change History"}}</a></li>
             <!-- <li *ngIf="data.includes('6')"><a [routerLink]="['/cms/card/card-issuance']">Chuyển nhượng thẻ</a></li> -->
             <!-- <li *ngIf="data.includes('6')"><a href="">New Card</a></li>
                 <li *ngIf="data.includes('6')"><a href="">Renew Card</a></li> -->
@@ -74,12 +74,12 @@
     <li *ngIf="data.includes('21')">
         <a class="has-arrow ai-icon" href="" aria-expanded="false">
             <i class="flaticon-092-money"></i>
-            <span class="nav-text">{{!!!language ? "Giao Dịch": "Transaction"}}</span>
+            <span class="nav-text">{{!language ? "Giao Dịch": "Transaction"}}</span>
         </a>
         <ul aria-expanded="false"> 
-            <!-- <li *ngIf="data.includes('30')"><a [routerLink]="['/cms/list/bills']">{{!!!language ? "Danh sách hóa đơn": "Invoice list"}}</a></li> -->
+            <!-- <li *ngIf="data.includes('30')"><a [routerLink]="['/cms/list/bills']">{{!language ? "Danh sách hóa đơn": "Invoice list"}}</a></li> -->
             <!-- <li *ngIf="data.includes('31')"><a [routerLink]="['/cms/card/card-info']">Danh sách hóa đơn bán lẻ</a></li> -->
-            <li *ngIf="data.includes('32')"><a [routerLink]="['/cms/list/goods-discount-voucher']">{{!!!language ? "Danh sách phiếu giảm giá": "List Of Discount Voucher"}}</a></li>
+            <li *ngIf="data.includes('32')"><a [routerLink]="['/cms/list/goods-discount-voucher']">{{!language ? "Danh sách phiếu giảm giá": "List Of Discount Voucher"}}</a></li>
             <!-- <li *ngIf="data.includes('6')"><a href="">Thông tin giờ tập</a></li> -->
             <!-- <li *ngIf="data.includes('6')"><a href="">Cập nhật tỷ giá ngoại tệ</a></li> -->
             <!-- <li *ngIf="data.includes('6')"><a href="">Cập nhật giá bán</a></li> -->
@@ -113,21 +113,21 @@
     <li *ngIf="data.includes('27')">
         <a class="has-arrow ai-icon" href="" aria-expanded="false">
             <i class="flaticon-381-print"></i>
-            <span class="nav-text">{{!!!language ? "Báo cáo": "Report"}}</span>
+            <span class="nav-text">{{!language ? "Báo cáo": "Report"}}</span>
         </a>
         <ul aria-expanded="false">
-            <li *ngIf="data.includes('28')"><a [routerLink]="['/cms/report']">{{!!!language ? "Xuất báo cáo": "Export Report"}}</a></li>
+            <li *ngIf="data.includes('28')"><a [routerLink]="['/cms/report']">{{!language ? "Xuất báo cáo": "Export Report"}}</a></li>
         </ul>
     </li>
     <li *ngIf="data.includes('29')">
         <a class="has-arrow ai-icon" href="" aria-expanded="false">
             <i class="flaticon-092-money"></i>
-            <span class="nav-text">{{!!!language ? "Hệ thống": "System"}}</span>
+            <span class="nav-text">{{!language ? "Hệ thống": "System"}}</span>
         </a>
         <ul aria-expanded="false">
-            <li *ngIf="data.includes('30')"><a [routerLink]="['/cms/list/sys-user']">{{!!!language ? "Danh sách tài khoản": "List of Account"}}</a></li>
-            <li *ngIf="data.includes('31')"><a [routerLink]="['/cms/system/sys-other-list']">{{!!!language ? "Tham số hệ thống": "System Parameter"}}</a></li>
-            <li *ngIf="data.includes('32')"><a [routerLink]="['/cms/system/sys-other-list-type']">{{!!!language ? "Nhóm tham số hệ thống": "System Parameter Type"}}</a></li>
+            <li *ngIf="data.includes('30')"><a [routerLink]="['/cms/list/sys-user']">{{!language ? "Danh sách tài khoản": "List of Account"}}</a></li>
+            <li *ngIf="data.includes('31')"><a [routerLink]="['/cms/system/sys-other-list']">{{!language ? "Tham số hệ thống": "System Parameter"}}</a></li>
+            <li *ngIf="data.includes('32')"><a [routerLink]="['/cms/system/sys-other-list-type']">{{!language ? "Nhóm tham số hệ thống": "System Parameter Type"}}</a></li>
         </ul>
     </li>
 

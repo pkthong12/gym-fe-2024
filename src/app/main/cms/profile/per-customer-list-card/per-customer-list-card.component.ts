@@ -136,7 +136,6 @@ export class PerCustomerListCardComponent {
     }
   }
   onSelectedListTypeChanged(e:any) {
-    console.log(e);
     if(this.currentIdType == e.id) return;
     else{
       this.currentName = e.name;

@@ -67,15 +67,15 @@ export class CardInfoEditComponent extends BaseEditComponent implements OnInit, 
     }
 
     this.formLabel = {
-      code: !!this.language ? 'Mã thẻ' : 'Card Code',
-      cardType: !!this.language ? 'Tên loại thẻ' : 'Card Type',
-      effectedDate: !!this.language ? 'Ngày hiệu lực' : 'Effected Date',
-      expiredDate: !!this.language ? 'Ngày hết hiệu lực' : 'Expired Date',
-      wardrobe: !!this.language ? 'Có tủ đồ' : 'Has a locker',
-      isHavePt: !!this.language ? 'Có PT' : 'Has PT',
-      shift: !!this.language ? 'Ca tập' : 'Shift',
-      price: !!this.language ? 'Giá tiền' : 'Price',
-      note: !!this.language ? 'Ghi chú' : 'Note',
+      code: !this.language ? 'Mã thẻ' : 'Card Code',
+      cardType: !this.language ? 'Tên loại thẻ' : 'Card Type',
+      effectedDate: !this.language ? 'Ngày hiệu lực' : 'Effected Date',
+      expiredDate: !this.language ? 'Ngày hết hiệu lực' : 'Expired Date',
+      wardrobe: !this.language ? 'Có tủ đồ' : 'Has a locker',
+      isHavePt: !this.language ? 'Có PT' : 'Has PT',
+      shift: !this.language ? 'Ca tập' : 'Shift',
+      price: !this.language ? 'Giá tiền' : 'Price',
+      note: !this.language ? 'Ghi chú' : 'Note',
     };
   }
 

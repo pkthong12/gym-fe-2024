@@ -59,12 +59,12 @@ export class GymShiftEditComponent extends BaseEditComponent implements OnInit, 
     }
 
     this.formLabel = {
-      code: !!this.language ? 'Mã thiết bị' : 'Shift Code',
-      name: !!this.language ? 'Tên ca tập' : 'Shift Name',
-      totalDays: !!this.language ? 'Số ngày trong tuần' : 'Number of Days in a Week',
-      hoursStart: !!this.language ? 'Giờ bắt đầu' : 'Start Time',
-      hoursEnd: !!this.language ? 'Giờ kết thúc' : 'End Time',
-      note: !!this.language ? 'Ghi chú' : 'Note',
+      code: !this.language ? 'Mã thiết bị' : 'Shift Code',
+      name: !this.language ? 'Tên ca tập' : 'Shift Name',
+      totalDays: !this.language ? 'Số ngày trong tuần' : 'Number of Days in a Week',
+      hoursStart: !this.language ? 'Giờ bắt đầu' : 'Start Time',
+      hoursEnd: !this.language ? 'Giờ kết thúc' : 'End Time',
+      note: !this.language ? 'Ghi chú' : 'Note',
       
     };
   }

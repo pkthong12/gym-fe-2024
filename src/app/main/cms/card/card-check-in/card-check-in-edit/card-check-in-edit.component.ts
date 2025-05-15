@@ -57,7 +57,7 @@ export class CardCheckInEditComponent extends BaseEditComponent implements OnIni
     }
 
     this.formLabel = {
-      code: !!this.language ? 'Mã thẻ' : 'Card Code',
+      code: !this.language ? 'Mã thẻ' : 'Card Code',
     };
   }
 

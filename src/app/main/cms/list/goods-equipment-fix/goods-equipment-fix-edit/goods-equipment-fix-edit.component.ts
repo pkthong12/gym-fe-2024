@@ -63,17 +63,17 @@ export class GoodsEquipmentFixEditComponent extends BaseEditComponent implements
     }
     
     this.formLabel = {
-      code: !!this.language ? 'Mã bảo trì' : 'Maintenance/repair Code',
-      status: !!this.language ? 'Hành động' : 'Action',
-      equipmentType: !!this.language ? 'Loại thiết bị' : 'Equipment Type',
-      name: !!this.language ? 'Tên thiết bị' : 'Equipment Name',
-      executionDate: !!this.language ? 'Ngày thực hiện' : 'Execution date',
-      completionDate: !!this.language ? 'Ngày hoàn thành' : 'Completion date',
-      result: !!this.language ? 'Trạng thái sau bảo trì/sửa chữa' : 'Status after maintenance/repair',
-      cost: !!this.language ? 'Chi phí' : 'Cost',
-      expectedUseTime: !!this.language ? 'Thời gian dự kiến sử dụng lại' : 'Estimated time to reuse',
-      supervisor: !!this.language ? 'Người giám sát' : 'Supervisor',
-      note: !!this.language ? 'Ghi chú' : 'Note',
+      code: !this.language ? 'Mã bảo trì' : 'Maintenance/repair Code',
+      status: !this.language ? 'Hành động' : 'Action',
+      equipmentType: !this.language ? 'Loại thiết bị' : 'Equipment Type',
+      name: !this.language ? 'Tên thiết bị' : 'Equipment Name',
+      executionDate: !this.language ? 'Ngày thực hiện' : 'Execution date',
+      completionDate: !this.language ? 'Ngày hoàn thành' : 'Completion date',
+      result: !this.language ? 'Trạng thái sau bảo trì/sửa chữa' : 'Status after maintenance/repair',
+      cost: !this.language ? 'Chi phí' : 'Cost',
+      expectedUseTime: !this.language ? 'Thời gian dự kiến sử dụng lại' : 'Estimated time to reuse',
+      supervisor: !this.language ? 'Người giám sát' : 'Supervisor',
+      note: !this.language ? 'Ghi chú' : 'Note',
       
     };
       

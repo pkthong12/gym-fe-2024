@@ -83,18 +83,18 @@ export class PerCustomerEditComponent extends BaseEditComponent  implements OnIn
     }
 
     this.formLabel = {
-      code: !!this.language ? 'Mã khách hàng' : 'Customer Code',
-      customerType: !!this.language ? 'Nhóm khách hàng' : 'Customer Group Type',
-      name: !!this.language ? 'Họ tên khách hàng' : 'Customer Name',
-      gender: !!this.language ? 'Giới tính' : 'Gender',
-      dateOfBirth: !!this.language ? 'Ngày sinh' : 'Date of Birth',
-      idNo: !!this.language ? 'Số CMND/CCCD' : 'ID No',
-      phoneNumber: !!this.language ? 'Số điện thoại' : 'Phone Number',
-      email: !!this.language ? 'Email cá nhân' : 'Email',
-      address: !!this.language ? 'Địa chỉ' : 'Address',
-      note: !!this.language ? 'Ghi chú' : 'Note',
-      isGuestPass: !!this.language ? 'Là khách tập thử' : 'Is a test guest',
-      customerStatus: !!this.language ? 'Trạng thái khách hàng' : 'Customer Status'
+      code: !this.language ? 'Mã khách hàng' : 'Customer Code',
+      customerType: !this.language ? 'Nhóm khách hàng' : 'Customer Group Type',
+      name: !this.language ? 'Họ tên khách hàng' : 'Customer Name',
+      gender: !this.language ? 'Giới tính' : 'Gender',
+      dateOfBirth: !this.language ? 'Ngày sinh' : 'Date of Birth',
+      idNo: !this.language ? 'Số CMND/CCCD' : 'ID No',
+      phoneNumber: !this.language ? 'Số điện thoại' : 'Phone Number',
+      email: !this.language ? 'Email cá nhân' : 'Email',
+      address: !this.language ? 'Địa chỉ' : 'Address',
+      note: !this.language ? 'Ghi chú' : 'Note',
+      isGuestPass: !this.language ? 'Là khách tập thử' : 'Is a test guest',
+      customerStatus: !this.language ? 'Trạng thái khách hàng' : 'Customer Status'
     };
   }
   

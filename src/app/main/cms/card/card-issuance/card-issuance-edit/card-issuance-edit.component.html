@@ -12,7 +12,7 @@
                                 <label for="documentNumber" class="mb-2 title-control-edit required">{{formLabel.documentNumber}}</label>
                                 <div class="form-group">
                                     <input formControlName="documentNumber" id="documentNumber" type="text"
-                                        placeholder="Document Number will be spontaneously arising"
+                                        [placeholder]="formLabel.documentNumberPlaceholder"
                                         class="form-control input-default " readonly>
                                 </div>
                             </div>
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <label for="hourCardBonus" class="mb-2 title-control-edit">{{formLabel.hourCardBonus}}</label>
+                            <label for="hourCardBonus" class="mb-2 title-control-edit">{{formLabel.hourCardBonusrCard}}</label>
                             <div class="form-group">
                                 <input formControlName="hourCardBonus" id="hourCardBonus" type="number"
                                     class="form-control input-default">

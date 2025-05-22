@@ -415,7 +415,6 @@ export class BasePageListComponent implements OnInit, AfterViewInit, OnChanges, 
     this.getDataForTable();
   }
   clickPageNumber(event: number) {
-    console.log(this.pageCount , event)
     if (event === this.currentPage$.value || this.pageCount < event || event < 1) {
       return;
     } else {

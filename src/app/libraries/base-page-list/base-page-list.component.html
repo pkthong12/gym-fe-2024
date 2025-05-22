@@ -137,12 +137,16 @@
                                 <div class="col-6">
                                     <ul id="pagination" class="pagination pagination-circle"
                                         style="justify-content: end;">
-                                        <li id="previous" class="page-item page-indicator" style="cursor: not-allowed;">
+                                        <li id="previous" class="page-item page-indicator" [style]="{
+                                            cursor: currentPage$.value == 1? 'not-allowed':'pointer'
+                                        }" (click)="clickPageNumber(1)">
                                             <a class="page-link">
                                                 <i class="la la-angle-double-left"></i>
                                             </a>
                                         </li>
-                                        <li id="previous" class="page-item page-indicator" style="cursor: not-allowed;">
+                                        <li id="previous" class="page-item page-indicator" [style]="{
+                                            cursor: currentPage$.value == 1? 'not-allowed':'pointer'
+                                        }" (click)="clickPageNumber(currentPage$.value - 1)">
                                             <a class="page-link">
                                                 <i class="la la-angle-left"></i>
                                             </a>
@@ -154,10 +158,16 @@
                                             <a class="page-link">{{item}}</a>
                                         </li>
                                         }
-                                        <li id="next" class="page-item page-indicator" style="cursor: not-allowed;">
+                                        <li id="next" class="page-item page-indicator"
+                                            (click)="clickPageNumber(currentPage$.value + 1)" [style]="{
+                                            cursor: currentPage$.value == pageCount? 'not-allowed':'pointer'
+                                        }">
                                             <a class="page-link"><i class="la la-angle-right"></i></a>
                                         </li>
-                                        <li id="next" class="page-item page-indicator" style="cursor: not-allowed;">
+                                        <li id="next" class="page-item page-indicator"
+                                            (click)="clickPageNumber(pageCount)" [style]="{
+                                            cursor: currentPage$.value == pageCount? 'not-allowed':'pointer'
+                                        }">
                                             <a class="page-link"><i class="la la-angle-double-right"></i></a>
                                         </li>
                                     </ul>

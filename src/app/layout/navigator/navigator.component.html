@@ -77,7 +77,7 @@
             <span class="nav-text">{{!language ? "Giao Dịch": "Transaction"}}</span>
         </a>
         <ul aria-expanded="false"> 
-            <!-- <li *ngIf="data.includes('30')"><a [routerLink]="['/cms/list/bills']">{{!language ? "Danh sách hóa đơn": "Invoice list"}}</a></li> -->
+            <li *ngIf="data.includes('30')"><a [routerLink]="['/cms/list/bills']">{{!language ? "Danh sách hóa đơn": "Invoice list"}}</a></li>
             <!-- <li *ngIf="data.includes('31')"><a [routerLink]="['/cms/card/card-info']">Danh sách hóa đơn bán lẻ</a></li> -->
             <li *ngIf="data.includes('32')"><a [routerLink]="['/cms/list/goods-discount-voucher']">{{!language ? "Danh sách phiếu giảm giá": "List Of Discount Voucher"}}</a></li>
             <!-- <li *ngIf="data.includes('6')"><a href="">Thông tin giờ tập</a></li> -->

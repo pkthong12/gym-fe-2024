@@ -65,7 +65,7 @@ export class TokenService {
       return 0;
     }
     this.httpService.makePostRequest('Refresh', api.SYS_REFRESH, { token: this.getToken() }).subscribe(x => {
-      if (x?.ok && x.status === '200') {
+      if (x?.ok && x.status == '200') {
         const body = x.body;
         if (body.statusCode === 200) {
           const data = body.innerBody;

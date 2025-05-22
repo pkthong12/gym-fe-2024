@@ -58,7 +58,6 @@ export class AppComponent  implements OnInit, OnDestroy, AfterViewInit,OnChanges
     setTimeout(() => {
       this.loading = true
       this.expiration = this.tokenService.getExpiration();
-      
       this.subscriptions.push(
         this.tokenService.isExpired$.subscribe(x => this.isExpiration = x)
       )

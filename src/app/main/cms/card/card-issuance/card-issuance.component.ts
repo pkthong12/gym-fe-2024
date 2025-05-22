@@ -175,13 +175,13 @@ export class CardIssuanceComponent {
       align: 'left',
       width: 200
     },
-    {
-      caption: ['Số tiền đẫ trả', 'The money have to pay'],
-      field: 'paidMoney',
-      type: 'currency',
-      align: 'left',
-      width: 200
-    },
+    // {
+    //   caption: ['Số tiền đẫ trả', 'The money have to pay'],
+    //   field: 'paidMoney',
+    //   type: 'currency',
+    //   align: 'left',
+    //   width: 200
+    // },
     {
       caption: ['Ghi chú', 'note'],
       field: 'note',

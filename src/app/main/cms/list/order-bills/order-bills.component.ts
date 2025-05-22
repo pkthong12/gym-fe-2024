@@ -85,7 +85,8 @@ export class OrderBillsComponent implements BaseComponent {
     {
       caption: ['Ngày tạo', 'Created Date'],
       field: 'createdDate',
-      type: 'text',
+
+      type: 'date',
       align: 'left',
       width: 120
     },

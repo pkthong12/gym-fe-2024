@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                 loginTime: new Date().getTime(),
               };
               this.authService.data$.next(newAuthData);
-              this.alertService.success('Login Successful');
+              this.alertService.success('Đăng nhập thành công');
               localStorage.setItem('gym_token', newAuthData.token);
               this.router.navigate(['/home']);
             } else {

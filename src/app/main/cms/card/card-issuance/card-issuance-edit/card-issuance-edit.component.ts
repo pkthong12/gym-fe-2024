@@ -108,7 +108,7 @@ export class CardIssuanceEditComponent extends BaseEditComponent implements OnIn
       cardPrice: [null],
       percentDiscount: [null],
       afterDiscount: [null],
-      percentVat: [null],
+      percentVat: [10],
       totalPrice: [null, [Validators.required]],
       moneyHavePay: [null],
       paidMoney: [null],

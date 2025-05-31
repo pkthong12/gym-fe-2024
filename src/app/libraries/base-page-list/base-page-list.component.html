@@ -71,9 +71,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (loading) {
+                                <!-- @if (loading) {
                                 <app-pre-loader></app-pre-loader>
-                                }
+                                } -->
                                 <tr *ngFor="let row of data; let row_index=index" (click)="onClickLocal(row, $event)">
                                     <td>
                                         <div [ngStyle]="{
@@ -103,7 +103,7 @@
                                                 class="custom-control custom-checkbox checkbox-success check-lg mr-3 d-flex">
                                                 <input [checked]="row[col.field]" type="checkbox"
                                                     class="custom-control-input form-control">
-                                                <label class="custom-control-label" for="isGuestPass"></label>
+                                                <label class="custom-control-label"></label>
                                             </div>
                                             }
                                             @else if (col.type == 'date') {
@@ -123,7 +123,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                        @if (!loading) {
                         <div>
                             <nav class="row">
                                 <div class="dataTables_info col-6" id="example2_info" role="status" aria-live="polite">
@@ -175,7 +174,6 @@
                             </nav>
 
                         </div>
-                        }
                     </div>
                 </div>
             </div>

@@ -44,7 +44,7 @@ export class PerCustomerListCardComponent {
       width: 100
     },
     {
-      caption: ['Đã hết hạn?', 'Expired?'],
+      caption: ['Đã hết hạn', 'Expired?'],
       field: 'isExpired',
       type: 'bool',
       align: 'left',

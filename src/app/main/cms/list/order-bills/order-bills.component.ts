@@ -35,7 +35,7 @@ export class OrderBillsComponent implements BaseComponent {
   ids:number[] = [];
   showButtons: EnumBaseButton[] = [
     EnumBaseButton.PRINT,
-    EnumBaseButton.VIEW,
+    // EnumBaseButton.VIEW,
     
   ]
   columns: ICoreTableColumnItem[] = [
@@ -123,7 +123,7 @@ export class OrderBillsComponent implements BaseComponent {
       field: 'payMethodName',
       type: 'text',
       align: 'left',
-      width: 180
+      width: 250
     },
   ]
   constructor(private httpService: HttpRequestService){

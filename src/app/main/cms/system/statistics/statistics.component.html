@@ -1,0 +1,133 @@
+<div class="form-head  d-flex flex-wrap align-items-center">
+    <h4 class="card-title mr-auto">Thống kê</h4>
+    <div class="row w-50">
+        <div class="col-md-12 d-flex flex-wrap align-items-center">
+            <div class="col-md-6">
+                <div class="">
+                    <label for="typeId" class=" title-control-edit ">Tháng</label>
+                    <div class="form-group">
+                        <app-dropdown (valueChange)="onDropdownSelected($event, 'month')" [dataShow]="optionMonth"
+                            [getByIdOptions]="currentTime.getMonth()+1">
+                        </app-dropdown>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-md-6">
+                <div class="">
+                    <label for="typeId" class=" title-control-edit ">Năm</label>
+                    <div class="form-group">
+                        <app-dropdown (valueChange)="onDropdownSelected($event, 'year')" [dataShow]="optionYear"
+                            [getByIdOptions]="currentTime.getFullYear()" [canClearValue]="false">
+                        </app-dropdown>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <button (click)="filter()" class="btn btn-secondary "><i class="fa fa-bar-chart  mr-3"></i> Lọc</button>
+</div>
+
+<div class="row">
+    <div class="col-xl-3 col-sm-6">
+        <div class="card card-coin">
+            <div class="card-body text-center">
+
+                <h4 class="text-black mb-2 font-w600">
+                    <span class="text-info mr-1">{{stats.totalNam || 0}} <i class="fa fa-solid fa-mars"></i></span>/
+                    <span class="text-pink mr-1">{{stats.totalNu || 0}} <i class="fa fa-solid fa-venus"></i></span>
+                </h4>
+                <p class="mb-0 fs-14">
+                    <span class="text-black mr-1 font-w600">Số hội viên còn hoạt động</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="card card-coin">
+            <div class="card-body text-center">
+
+                <h4 class="text-info mb-2 font-w600">{{stats.averageAge || 0}}</h4>
+                <p class="mb-0 fs-14">
+                    <span class="text-black mr-1 font-w600"> Độ tuổi trung bình</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="card card-coin">
+            <div class="card-body text-center">
+                <h4 class="text-danger mb-2 font-w600">{{stats.theHetHan|| 0}}</h4>
+                <p class="mb-0 fs-14">
+                    <span class="text-black mr-1 font-w600">Số thẻ hết hạn</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+        <div class="card card-coin">
+            <div class="card-body text-center">
+
+                <h4 class="text-success mb-2 ">{{stats.doanhThu|| 0 | number}}</h4>
+                <p class="mb-0 fs-14">
+                    <span class="text-black mr-1 font-w600"> Doanh thu</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="height: 60vh;">
+    <div class="col-xl-4 col-xxl-4" style="height: 100%;">
+        <div class="card">
+            <div class="card-header border-0 flex-wrap pb-0">
+                <div class="row mb-3 w-100">
+                    <div class="col-md-12 d-flex flex-wrap align-items-center">
+                        <div class="col-md-9">
+                            <div class="">
+                                <div class="form-group">
+                                    <app-dropdown (valueChange)="onDropdownSelected($event, 'optionCardId')"
+                                        [dataShow]="optionCard" [getByIdOptions]="101" [canClearValue]="false">
+                                    </app-dropdown>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <canvas #doughnut_chart></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-8 col-xxl-8" style="height: 100%;">
+        <div class="card">
+            <div class="card-header border-0 flex-wrap pb-0">
+                <div class="row mb-3 w-100">
+                    <div class="col-md-12 d-flex flex-wrap align-items-center">
+                        <div class="col-md-6">
+                            <div class="">
+                                <div class="form-group">
+                                    <app-dropdown (valueChange)="onDropdownSelected($event, 'optionMarketId')"
+                                        [dataShow]="optionMarket" [getByIdOptions]="103" [canClearValue]="false">
+                                    </app-dropdown>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <canvas #barChart></canvas>
+            </div>
+        </div>
+    </div>
+</div>

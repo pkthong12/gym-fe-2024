@@ -10,7 +10,7 @@
         <p class="select-box__input-text">{{item.name}}</p>
       </div>
     }
-    @if (!!selectedId) {
+    @if (!!selectedId && canClearValue) {
       <button (click)="onUnselectedIds()" type="button" class="close" data-dismiss="modal"><span>&times;</span>
       </button>
     }

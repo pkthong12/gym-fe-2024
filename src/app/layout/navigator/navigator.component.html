@@ -113,10 +113,11 @@
     <li *ngIf="data.includes('27')">
         <a class="has-arrow ai-icon" href="" aria-expanded="false">
             <i class="flaticon-381-print"></i>
-            <span class="nav-text">{{!language ? "Báo cáo": "Report"}}</span>
+            <span class="nav-text">{{!language ? "Báo cáo & Thống kê": "Report & Statistics"}}</span>
         </a>
         <ul aria-expanded="false">
             <li *ngIf="data.includes('28')"><a [routerLink]="['/cms/report']">{{!language ? "Xuất báo cáo": "Export Report"}}</a></li>
+            <li *ngIf="data.includes('33')"><a [routerLink]="['/cms/statistics']">{{!language ? "Thống kê": "Statistics"}}</a></li>
         </ul>
     </li>
     <li *ngIf="data.includes('29')">

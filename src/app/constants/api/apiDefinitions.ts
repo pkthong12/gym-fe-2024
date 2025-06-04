@@ -159,6 +159,7 @@ export enum api{
     EXPORT_REPORT_EXCEL = '/Report/GetReport',
     STATISTIC_GET_STAT = '/Report/GetStats',
     STATISTIC_GET_BAR_CHART = '/Report/GetBarChart',
+    STATISTIC_GET_DOUGHNUT_CHART = '/Report/GetPieChart',
 
     // GOODS_DISCOUNT_VOUCHER
     GOODS_DISCOUNT_VOUCHER_QUERY_LIST = '/GoodsDiscountVoucher/QueryList',

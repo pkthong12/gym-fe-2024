@@ -15,4 +15,7 @@ export class StatisticsService {
     getBarChart(type: number, month?: number, year: number = new Date().getFullYear()): Observable<any> {
         return this.httpService.makePostRequest('getListType', api.STATISTIC_GET_BAR_CHART, { type: type, month: month?.toString(), year: year.toString() });
     }
+    getdoughnutChart(type: number, month?: number, year: number = new Date().getFullYear()): Observable<any> {
+        return this.httpService.makePostRequest('getListType', api.STATISTIC_GET_DOUGHNUT_CHART, { type: type, month: month?.toString(), year: year.toString() });
+    }
 }

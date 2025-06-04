@@ -2,9 +2,10 @@ import { AfterViewInit, Component, ElementRef, inject, signal, ViewChild } from 
 import { DropdownComponent } from '../../../../libraries/base-dropdown/dropdown.component';
 import {
   Chart,
+  ChartType,
   registerables
 } from 'chart.js';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { StatisticsService } from './statistics.service';
 
@@ -140,12 +141,16 @@ export class StatisticsComponent implements AfterViewInit {
   labelBar: any[] = [];
   dataBar: any[] = [];
 
+  labelPie: any[] = [];
+  dataPie: any[] = [];
+  typeChart: ChartType = 'bar';
   ngAfterViewInit(): void {
     this.doughnutChart();
 
     setTimeout(() => {
       this.getStat();
       this.getBarCharts();
+      this.getdoughnutChart();
     })
   }
 
@@ -169,6 +174,17 @@ export class StatisticsComponent implements AfterViewInit {
     }
     );
   }
+  getdoughnutChart() {
+    this.#service.getdoughnutChart(this.optionCardId, this.month, this.year).subscribe(res => {
+      if (res.status == 200 && res.ok == true) {
+        const data = [...res.body.innerBody] as any[];
+        this.labelPie = data.map((x: any) => x.labels);
+        this.dataPie = data.map((x: any) => x.datasets);
+        this.doughnutChart();
+      }
+    }
+    );
+  }
   onDropdownSelected(event: any, e: string): void {
     if (e == 'month') {
       this.month = event;
@@ -177,23 +193,29 @@ export class StatisticsComponent implements AfterViewInit {
       this.year = event;
     }
     if (e == 'optionCardId') {
-      this.optionMarketId = event;
-      // this.getStat();
+      this.optionCardId = event;
+      this.getdoughnutChart();
     }
     if (e == 'optionMarketId') {
       this.optionMarketId = event;
+      if (event == 104) {
+        this.typeChart = 'line';
+      } else {
+        this.typeChart = 'bar';
+      }
       this.getBarCharts();
     }
   }
 
   doughnutChart() {
+    this.chartDoughnut?.destroy();
     this.chartDoughnut = new Chart(this.chartCanvas.nativeElement, {
       type: 'doughnut', // hoặc 'line', 'pie', v.v.
       data: {
-        labels: ['Tháng 1', 'Tháng 2', 'Tháng 3'],
+        labels: [...this.labelPie],
         datasets: [{
-          label: 'Doanh thu',
-          data: [65, 59, 80],
+          label: 'Số lượng',
+          data: [...this.dataPie],
         }]
       },
       options: {
@@ -210,13 +232,21 @@ export class StatisticsComponent implements AfterViewInit {
   }
   barChart() {
     this.chartBar?.destroy();
+    const lineChart_2 = this.barChartCanvas.nativeElement.getContext('2d');
+    //generate gradient
+    const lineChart_2gradientStroke = lineChart_2?.createLinearGradient(500, 0, 100, 0);
+    lineChart_2gradientStroke?.addColorStop(0, "rgba(235, 129, 83, 1)");
+    lineChart_2gradientStroke?.addColorStop(1, "rgba(235, 129, 83, 0.5)");
+
     this.chartBar = new Chart(this.barChartCanvas.nativeElement, {
-      type: 'bar', // hoặc 'line', 'pie', v.v.
+      type: this.typeChart, // hoặc 'line', 'pie', v.v.
       data: {
         labels: [...this.labelBar],
         datasets: [{
-          label: 'Doanh thu',
+          label: '',
           data: [...this.dataBar],
+          borderColor: lineChart_2gradientStroke,
+          pointBackgroundColor: 'rgba(235, 129, 83, 0.5)'
         }]
       },
       options: {
@@ -234,5 +264,7 @@ export class StatisticsComponent implements AfterViewInit {
 
   filter() {
     this.getStat();
+    this.getBarCharts();
+    this.getdoughnutChart();
   }
 }
